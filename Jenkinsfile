@@ -1,25 +1,36 @@
+properties([pipelineTriggers([githubPush()])])
+ 
 pipeline {
-    agent any
-    stages {
-        stage('build') {
-            steps {
-                echo "building"
-            }
-        }
-        stage('testing') {
-            steps {
-                echo "testing"
-                
-                
-                
-            }
-        }
-        stage('delivery') {
-            steps {
-                echo "delivering"
-
-            }
-        }
-
+    /* specify nodes for executing */
+    agent {
+        label 'github-ci'
     }
+ 
+    stages {
+        /* checkout repo */
+        stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:veekrum/simple-python-pyinstaller-app.git',
+                    credentialsId: '',
+                 ]]
+                ])
+            }
+        }
+         stage('Do the deployment') {
+            steps {
+                echo ">> Run deploy applications "
+            }
+        }
+    }
+ 
+    /* Cleanup workspace */
+    post {
+       always {
+           deleteDir()
+       }
+   }
 }
