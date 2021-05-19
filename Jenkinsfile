@@ -12,7 +12,7 @@ pipeline {
                  $class: 'GitSCM',
                  branches: [[name: 'devops']],
                  userRemoteConfigs: [[
-                    url: 'git@github.com:veekrum/simple-python-pyinstaller-app.git',
+                    url: 'https://github.com/veekrum/simple-python-pyinstaller-app.git',
                     credentialsId: '',
                  ]]
                 ])
