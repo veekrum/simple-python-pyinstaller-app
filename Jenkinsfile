@@ -12,5 +12,12 @@ pipeline {
                 
             }
         }
+        stage('delivery') {
+            steps {
+                echo "delivering"
+
+            }
+        }
+
     }
 }
