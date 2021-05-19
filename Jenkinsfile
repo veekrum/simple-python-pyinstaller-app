@@ -10,6 +10,8 @@ pipeline {
             steps {
                 echo "testing"
                 
+                
+                
             }
         }
         stage('delivery') {
