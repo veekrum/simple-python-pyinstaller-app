@@ -10,7 +10,7 @@ pipeline {
             steps {
                 checkout([
                  $class: 'GitSCM',
-                 branches: [[name: 'master']],
+                 branches: [[name: 'devops']],
                  userRemoteConfigs: [[
                     url: 'git@github.com:veekrum/simple-python-pyinstaller-app.git',
                     credentialsId: '',
